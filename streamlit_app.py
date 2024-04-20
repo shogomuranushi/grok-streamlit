@@ -5,15 +5,12 @@ from groq import Groq
 st.set_page_config(page_icon="💬", layout="wide",
                    page_title="Groq Goes Brrrrrrrr...")
 
-
 def icon(emoji: str):
     """Shows an emoji as a Notion-style page icon."""
     st.write(
         f'<span style="font-size: 78px; line-height: 1">{emoji}</span>',
         unsafe_allow_html=True,
     )
-
-# icon("🏎️")
 
 st.subheader("Groq Chat Streamlit App", divider="rainbow", anchor=False)
 
@@ -23,7 +20,7 @@ client = Groq(
 
 # Initialize chat history and selected model
 if "messages" not in st.session_state:
-    st.session_state.messages = []
+    st.session_state.messages = [{"role": "system", "content": "日本語で応答してください"}]
 
 if "selected_model" not in st.session_state:
     st.session_state.selected_model = None
@@ -50,7 +47,7 @@ with col1:
 
 # Detect model change and clear chat history if model has changed
 if st.session_state.selected_model != model_option:
-    st.session_state.messages = []
+    st.session_state.messages = [{"role": "system", "content": "日本語で応答してください"}]
     st.session_state.selected_model = model_option
 
 max_tokens_range = models[model_option]["tokens"]
