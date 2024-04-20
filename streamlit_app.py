@@ -13,8 +13,7 @@ def icon(emoji: str):
         unsafe_allow_html=True,
     )
 
-
-icon("🏎️")
+# icon("🏎️")
 
 st.subheader("Groq Chat Streamlit App", divider="rainbow", anchor=False)
 
@@ -46,7 +45,7 @@ with col1:
         "Choose a model:",
         options=list(models.keys()),
         format_func=lambda x: models[x]["name"],
-        index=4  # Default to mixtral
+        index=2  # Default to mixtral
     )
 
 # Detect model change and clear chat history if model has changed
